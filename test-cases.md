@@ -30,8 +30,7 @@
 Шаги:
 1. отправить GET запрос: /products/prod123/status?authToken=abcd123qwert5678;
 Ожидаемый результат:
-- получен http-код: 500.
-- получен ответ в json формате: { "errorMessage": ...}.
+- получен http-код: 404.
 Статус: -
 Приоритет: High
 
@@ -62,8 +61,7 @@
 Шаги:
 1. отправить GET запрос: /products/12/status?authToken=abcd123qwert5678&recalculate=abc;
 Ожидаемый результат:
-- получен http-код: 200 или 500;
-- получен ответ в формате json {"productStatus": 0 или 1} или {"errorMessage": ...}
+- получен http-код: 400.
 Статус: -
 Приоритет: High
 
@@ -84,8 +82,7 @@
 Шаги:
 1. отправить GET запрос: /products/12/status?authToken=abcd123qwert5678&owner=123;
 Ожидаемый результат:
-- получен http-код: 200 или 500;
-- получен ответ в формате json {"productStatus": 0 или 1} или {"errorMessage": ...}
+- получен http-код: 400.
 Статус: -
 Приоритет: High
 
@@ -128,8 +125,7 @@
 Шаги:
 1. отправить GET запрос: /products/12/status?authToken=abcd123qwert5678&region=123;
 Ожидаемый результат:
-- получен http-код: 200 или 500.
-- получен ответ в формате json {"productStatus": 0 или 1} или {"errorMessage": ...}
+- получен http-код: 400.
 Статус: -
 Приоритет: High
 
@@ -211,8 +207,7 @@
 Шаги:
 1. отправить GET запрос: /products/null/status?authToken=abcd123qwert5678;
 Ожидаемый результат:
-- получен http-код: 500.
-- получен ответ в формате json {"errorMessage": ...}
+- получен http-код: 400.
 Статус: -
 Приоритет: High
 
@@ -243,9 +238,9 @@
 
 # TC-022
 
-Название: Отправка запроса c передачей recalculate=false, owner=Создатель, region=Поволжье;
+Название: Отправка запроса c передачей recalculate=true, owner=null, region=Поволжье;
 Шаги:
-1. отправить GET запрос: /products/12/status?authToken=abcd123qwert5678&recalculate=false&owner=Создатель&region=Поволжье;
+1. отправить GET запрос: /products/12/status?authToken=abcd123qwert5678&recalculate=true&owner=null&region=Поволжье;
 Ожидаемый результат:
 - получен http-код: 200.
 - получен ответ в формате json {"productStatus": 0 или 1}
@@ -255,9 +250,9 @@
 
 # TC-023
 
-Название: Отправка запроса c передачей recalculate=false, owner=Пользователь, region=Северо-Запад;
+Название: Отправка запроса c передачей recalculate=false, owner=Пользователь, region=Поволжье;
 Шаги:
-1. отправить GET запрос: /products/12/status?authToken=abcd123qwert5678&recalculate=false&owner=Пользователь&region=Северо-Запад;
+1. отправить GET запрос: /products/12/status?authToken=abcd123qwert5678&recalculate=false&owner=Пользователь&region=Поволжье;
 Ожидаемый результат:
 - получен http-код: 200.
 - получен ответ в формате json {"productStatus": 0 или 1}
@@ -275,3 +270,63 @@
 - получен ответ в формате json {"productStatus": 0 или 1} или {"errorMessage": ...}
 Статус: -
 Приоритет: High
+
+
+# TC-025
+
+Название: Отправка запроса c передачей recalculate=false, owner=null, region=Северо-Запад;
+Шаги:
+1. отправить GET запрос: /products/12/status?authToken=abcd123qwert5678&recalculate=false&owner=null&region=Северо-Запад;
+Ожидаемый результат:
+- получен http-код: 200.
+- получен ответ в формате json {"productStatus": 0 или 1}
+Статус: -
+Приоритет: Medium
+
+
+# TC-026
+
+Название: Отправка запроса c передачей recalculate=false, owner=Создатель, region=Сибирь;
+Шаги:
+1. отправить GET запрос: /products/12/status?authToken=abcd123qwert5678&recalculate=false&owner=Создатель&region=Сибирь;
+Ожидаемый результат:
+- получен http-код: 200.
+- получен ответ в формате json {"productStatus": 0 или 1}
+Статус: -
+Приоритет: Medium
+
+
+# TC-027
+
+Название: Отправка запроса c передачей recalculate=null, owner=null, region=Сибирь;
+Шаги:
+1. отправить GET запрос: /products/12/status?authToken=abcd123qwert5678&recalculate=null&owner=null&region=Сибирь;
+Ожидаемый результат:
+- получен http-код: 200.
+- получен ответ в формате json {"productStatus": 0 или 1}
+Статус: -
+Приоритет: Medium
+
+
+# TC-028
+
+Название: Отправка запроса c передачей recalculate=null, owner=Создатель, region=Поволжье;
+Шаги:
+1. отправить GET запрос: /products/12/status?authToken=abcd123qwert5678&recalculate=null&owner=Создатель&region=Поволжье;
+Ожидаемый результат:
+- получен http-код: 200.
+- получен ответ в формате json {"productStatus": 0 или 1}
+Статус: -
+Приоритет: Medium
+
+
+# TC-029
+
+Название: Отправка запроса c передачей recalculate=null, owner=Пользователь, region=Северо-Запад;
+Шаги:
+1. отправить GET запрос: /products/12/status?authToken=abcd123qwert5678&recalculate=null&owner=Пользователь&region=Северо-Запад;
+Ожидаемый результат:
+- получен http-код: 200.
+- получен ответ в формате json {"productStatus": 0 или 1}
+Статус: -
+Приоритет: Medium
