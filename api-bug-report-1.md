@@ -11,8 +11,12 @@ Bug-Report-001. Создание существующей папки
 Шаги:
 1. Отправить PUT запрос: https://cloud-api.yandex.net/v1/disk/resources?path=test;
 Ожидаемый результат:
-- Получен http-код: 401.
+- Получен http-код: 401;
+- Получено тело ответа json формата { "message": "string", "description": "string", "error": "string" };
+- Папка не была создана.
 Фактический результат:
-- Получен http-код: 409 (Conflict).
+- Получен http-код: 409 (Conflict);
+- Получено тело ответа json формата { "error": "string", "description": "string", "message": "string" };
+- Папка не была создана.
 Скриншот фактического результата:
 ![alt text](image-3.png)
