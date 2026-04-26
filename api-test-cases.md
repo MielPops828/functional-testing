@@ -117,8 +117,7 @@
 Шаги:
 1. отправить GET запрос: /products/1/cost?authToken=abcd1234qwert567&count=0&start=2;
 Ожидаемый результат:
-- получен ответ с http-кодом: 400 или 500;
-- получен ответ в формате json для кода 500 {"errorMessage": ...}
+- получен ответ с http-кодом: 400;
 Статус: -
 Приоритет: Medium
 
@@ -161,8 +160,7 @@
 Шаги:
 1. отправить GET запрос: /products/1/cost?authToken=abcd1234qwert567&count=&start=;
 Ожидаемый результат:
-- получен ответ с http-кодом: 400 или 500;
-- получен ответ в формате json для кода 500 {"errorMessage": ...}
+- получен ответ с http-кодом: 400;
 Статус: -
 Приоритет: High
 
@@ -324,7 +322,7 @@
 
 Название: Расчет стоимости при count=3, start=4;
 Шаги:
-1. отправить GET запрос: /products/1/cost?authToken=validtoken123456&count=1&start=0;
+1. отправить GET запрос: /products/1/cost?authToken=validtoken123456&count=3&start=4;
 Ожидаемый результат:
 - получен http-код: 200;
 - получен ответ в json формате: { "cost": 65 }.
@@ -412,7 +410,7 @@
 
 Название: Расчет стоимости при count=5, start=2;
 Шаги:
-1. отправить GET запрос: /products/1/cost?authToken=validtoken123456&count=5&start=1;
+1. отправить GET запрос: /products/1/cost?authToken=validtoken123456&count=5&start=2;
 Ожидаемый результат:
 - получен http-код: 200;
 - получен ответ в json формате: { "cost": 100 }.
@@ -452,3 +450,58 @@
 - нет утечки данных.
 Статус: -
 Приоритет: High
+
+# TC-042
+
+Название: Расчет стоимости при count=1, start=5;
+Шаги:
+1. отправить GET запрос: /products/1/cost?authToken=validtoken123456&count=1&start=5;
+Ожидаемый результат:
+- получен http-код: 200;
+- получен ответ в json формате: { "cost": 30 }.
+Статус: -
+Приоритет: Medium
+
+# TC-043
+
+Название: Расчет стоимости при count=2, start=5;
+Шаги:
+1. отправить GET запрос: /products/1/cost?authToken=validtoken123456&count=2&start=5;
+Ожидаемый результат:
+- получен http-код: 200;
+- получен ответ в json формате: { "cost": 55 }.
+Статус: -
+Приоритет: Medium
+
+# TC-044
+
+Название: Расчет стоимости при count=3, start=5;
+Шаги:
+1. отправить GET запрос: /products/1/cost?authToken=validtoken123456&count=3&start=5;
+Ожидаемый результат:
+- получен http-код: 200;
+- получен ответ в json формате: { "cost": 75 }.
+Статус: -
+Приоритет: Medium
+
+# TC-045
+
+Название: Расчет стоимости при count=4, start=5;
+Шаги:
+1. отправить GET запрос: /products/1/cost?authToken=validtoken123456&count=4&start=5;
+Ожидаемый результат:
+- получен http-код: 200;
+- получен ответ в json формате: { "cost": 90 }.
+Статус: -
+Приоритет: Medium
+
+# TC-046
+
+Название: Расчет стоимости при count=5, start=5;
+Шаги:
+1. отправить GET запрос: /products/1/cost?authToken=validtoken123456&count=5&start=5;
+Ожидаемый результат:
+- получен http-код: 200;
+- получен ответ в json формате: { "cost": 100 }.
+Статус: -
+Приоритет: Medium
