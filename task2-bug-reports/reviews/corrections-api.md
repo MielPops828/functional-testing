@@ -1,6 +1,6 @@
 # Рецензирование требований (API)
 
-Условие задачи:
+## Условие задачи:
 - Реализовано REST API PUT https://cloud-api.yandex.net:443/v1/disk/resources
 - с заголовками Content-Type: application/json, Authorization: [token]
 - параметры строки запроса: 
